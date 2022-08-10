@@ -58,17 +58,28 @@ class _ShowAnswersScreenState extends State<ShowAnswersScreen> {
 
   Widget _buildItem(BuildContext context, int index) {
     if (index == widget.questions.length) {
-      return ElevatedButton(
-        child: const Text("Done"),
-        onPressed: () {
-          Navigator.of(context)
-              .popUntil(ModalRoute.withName(Navigator.defaultRouteName));
-        },
+      return Padding(
+        padding: const EdgeInsets.all(6.0),
+        child: ElevatedButton(
+          style: ElevatedButton.styleFrom(
+              primary: const Color(0xFF5386E4),
+              fixedSize: Size(MediaQuery.of(context).size.width - 60, 50),
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(15))),
+          child: const Text(
+            "Done",
+            style: TextStyle(fontSize: 22, fontWeight: FontWeight.w600),
+          ),
+          onPressed: () {
+            Navigator.of(context).pop();
+          },
+        ),
       );
     }
     Question question = widget.questions[index];
     bool correct = question.correctAnswer == widget.answers[index];
     return Card(
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
       elevation: 5,
       child: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -80,14 +91,14 @@ class _ShowAnswersScreenState extends State<ShowAnswersScreen> {
               style: const TextStyle(
                   color: Colors.black,
                   fontWeight: FontWeight.w500,
-                  fontSize: 16.0),
+                  fontSize: 18.0),
             ),
             const SizedBox(height: 5.0),
             Text(
               HtmlUnescape().convert("${widget.answers[index]}"),
               style: TextStyle(
                   color: correct ? Colors.green : Colors.red,
-                  fontSize: 18.0,
+                  fontSize: 20.0,
                   fontWeight: FontWeight.bold),
             ),
             const SizedBox(height: 5.0),
@@ -98,9 +109,9 @@ class _ShowAnswersScreenState extends State<ShowAnswersScreen> {
                       const TextSpan(text: "Answer: "),
                       TextSpan(
                           text: HtmlUnescape().convert(question.correctAnswer),
-                          style: const TextStyle(fontWeight: FontWeight.w500))
+                          style: const TextStyle(fontWeight: FontWeight.w700))
                     ]),
-                    style: const TextStyle(fontSize: 16.0),
+                    style: const TextStyle(fontSize: 18.0),
                   )
           ],
         ),

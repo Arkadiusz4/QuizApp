@@ -18,7 +18,10 @@ class _HomeScreenState extends State<HomeScreen> {
       backgroundColor: const Color(0xFFC3DFE0),
       appBar: AppBar(
           leading: IconButton(
-        icon: Icon(Icons.menu),
+        icon: const Icon(
+          Icons.menu,
+          color: Color(0xFFC3DFE0),
+        ),
         onPressed: () {},
       )),
       body: GridView.builder(
