@@ -19,18 +19,17 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return AdvancedDrawer(
       drawer: _drawer(),
-      backdropColor: Color(0xFF01172F),
+      backdropColor: const Color(0xFFFCFCFF),
       controller: _advancedDrawerController,
       animationCurve: Curves.easeInOut,
-      animationDuration: const Duration(milliseconds: 300),
+      animationDuration: const Duration(milliseconds: 200),
       animateChildDecoration: true,
-      rtlOpening: false,
       disabledGestures: false,
       childDecoration: const BoxDecoration(
-        borderRadius: const BorderRadius.all(Radius.circular(16)),
+        borderRadius: BorderRadius.all(Radius.circular(16)),
       ),
       child: Scaffold(
-        backgroundColor: const Color(0xFFC3DFE0),
+        backgroundColor: const Color(0xFFFCFCFF),
         appBar: AppBar(
           leading: IconButton(
             onPressed: () => _advancedDrawerController.showDrawer(),
@@ -38,10 +37,11 @@ class _HomeScreenState extends State<HomeScreen> {
               valueListenable: _advancedDrawerController,
               builder: (_, value, __) {
                 return AnimatedSwitcher(
-                  duration: Duration(milliseconds: 250),
+                  duration: const Duration(milliseconds: 250),
                   child: Icon(
                     value.visible ? Icons.clear : Icons.menu,
                     key: ValueKey<bool>(value.visible),
+                    color: const Color(0xFFFCFCFF),
                   ),
                 );
               },
@@ -80,7 +80,7 @@ class _HomeScreenState extends State<HomeScreen> {
             Container(
               foregroundDecoration: const BoxDecoration(
                   gradient: LinearGradient(
-                colors: [Colors.transparent, Color(0xFF01172F)],
+                colors: [Colors.transparent, Color(0xFF251F47)],
                 begin: Alignment.topCenter,
                 end: Alignment.bottomCenter,
               )),
@@ -94,13 +94,13 @@ class _HomeScreenState extends State<HomeScreen> {
             Positioned(
               bottom: -1,
               child: Padding(
-                padding: const EdgeInsets.only(bottom: 8, left: 8),
+                padding: const EdgeInsets.only(bottom: 15, left: 10),
                 child: Text(
                   categories[index].name,
                   softWrap: false,
                   style: GoogleFonts.roboto(
-                      color: Colors.white,
-                      fontSize: 18,
+                      color: const Color(0xFFFCFCFF),
+                      fontSize: 20,
                       fontWeight: FontWeight.w600),
                 ),
               ),
@@ -113,5 +113,31 @@ class _HomeScreenState extends State<HomeScreen> {
 }
 
 Widget _drawer() {
-  return Container();
+  return ListTileTheme(
+    child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisSize: MainAxisSize.max,
+        children: const [
+          ListTile(
+            leading: Icon(Icons.home),
+            title: Text('Home'),
+          ),
+          ListTile(
+            leading: Icon(Icons.home),
+            title: Text('Home'),
+          ),
+          ListTile(
+            leading: Icon(Icons.home),
+            title: Text('Home'),
+          ),
+          ListTile(
+            leading: Icon(Icons.home),
+            title: Text('Home'),
+          ),
+          ListTile(
+            leading: Icon(Icons.home),
+            title: Text('Home'),
+          ),
+        ]),
+  );
 }

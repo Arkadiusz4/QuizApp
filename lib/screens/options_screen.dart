@@ -44,7 +44,7 @@ class _OptionsScreenState extends State<OptionsScreen> {
         leading: IconButton(
           icon: const Icon(
             Icons.arrow_back_ios_new,
-            color: Color(0xFFF4F3EE),
+            color: Color(0xFFFCFCFF),
           ),
           onPressed: () => Navigator.of(context).pop(),
         ),
@@ -59,7 +59,7 @@ class _OptionsScreenState extends State<OptionsScreen> {
                       height: MediaQuery.of(context).size.height * 0.45,
                       foregroundDecoration: const BoxDecoration(
                           gradient: LinearGradient(
-                        colors: [Colors.transparent, Color(0xFF01172F)],
+                        colors: [Colors.transparent, Color(0xFF251F47)],
                         begin: Alignment.topCenter,
                         end: Alignment.bottomCenter,
                       )),
@@ -75,8 +75,8 @@ class _OptionsScreenState extends State<OptionsScreen> {
                       left: 20,
                       child: Text(
                         widget.text,
-                        style:
-                            const TextStyle(color: Colors.white, fontSize: 35),
+                        style: const TextStyle(
+                            color: Color(0xFFFCFCFF), fontSize: 35),
                       ),
                     )
                   ]),
@@ -89,7 +89,7 @@ class _OptionsScreenState extends State<OptionsScreen> {
                         height: MediaQuery.of(context).size.height * 0.55,
                         width: MediaQuery.of(context).size.width,
                         decoration: const BoxDecoration(
-                            color: Color(0xFF5386E4),
+                            color: Color(0xFF3083DC),
                             borderRadius: BorderRadius.vertical(
                                 top: Radius.circular(20))),
                         child: Column(
@@ -100,7 +100,7 @@ class _OptionsScreenState extends State<OptionsScreen> {
                                 'Choose difficulty',
                                 style: TextStyle(
                                     fontSize: 22,
-                                    color: Color(0xFFF4F3EE),
+                                    color: Color(0xFFFCFCFF),
                                     fontWeight: FontWeight.w700),
                               ),
                             ),
@@ -210,11 +210,11 @@ class _OptionsScreenState extends State<OptionsScreen> {
 
   Widget _loading(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFF01172F),
+      backgroundColor: const Color(0xFF251F47),
       body: Center(
           child: Container(
         child: LoadingAnimationWidget.dotsTriangle(
-            color: const Color(0xFFF4F3EE), size: 100),
+            color: const Color(0xFFFCFCFF), size: 100),
       )),
     );
   }

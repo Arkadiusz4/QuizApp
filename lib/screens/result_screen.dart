@@ -34,7 +34,7 @@ class _ResultScreenState extends State<ResultScreen> {
       if (widget.questions[index].correctAnswer == value) correct++;
     });
     return Scaffold(
-      backgroundColor: const Color(0xFFF4F3EE),
+      backgroundColor: const Color(0xFFFCFCFF),
       body: LayoutBuilder(
         builder: (context, constraints) => SingleChildScrollView(
           child: Column(
@@ -55,7 +55,7 @@ class _ResultScreenState extends State<ResultScreen> {
                         child: Container(
                           foregroundDecoration: const BoxDecoration(
                               gradient: LinearGradient(
-                            colors: [Colors.transparent, Color(0xFF01172F)],
+                            colors: [Colors.transparent, Color(0xFF251F47)],
                             begin: Alignment.topCenter,
                             end: Alignment.bottomCenter,
                           )),
@@ -82,7 +82,7 @@ class _ResultScreenState extends State<ResultScreen> {
                         child: Container(
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(15),
-                            color: const Color(0xFFF4F3EE),
+                            color: const Color(0xFFFCFCFF),
                           ),
                           child: Padding(
                               padding: const EdgeInsets.symmetric(vertical: 5),
@@ -92,7 +92,7 @@ class _ResultScreenState extends State<ResultScreen> {
                                     MainAxisAlignment.spaceAround,
                                 children: [
                                   ResultColumn(
-                                    textColor1: const Color(0xFF5386E4),
+                                    textColor1: const Color(0xFF3083DC),
                                     textColor2: Colors.green,
                                     text1:
                                         '${correct / widget.questions.length * 100}%',
@@ -101,7 +101,7 @@ class _ResultScreenState extends State<ResultScreen> {
                                     subtext2: 'Correct',
                                   ),
                                   ResultColumn(
-                                    textColor1: const Color(0xFF5386E4),
+                                    textColor1: const Color(0xFF3083DC),
                                     textColor2: Colors.red,
                                     text1: '${widget.questions.length}',
                                     subtext1: 'Total Questions',

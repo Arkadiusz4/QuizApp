@@ -27,7 +27,7 @@ class _ShowAnswersScreenState extends State<ShowAnswersScreen> {
         leading: IconButton(
           icon: const Icon(
             Icons.arrow_back_ios_new,
-            color: Color(0xFFF4F3EE),
+            color: Color(0xFFFCFCFF),
           ),
           onPressed: () => Navigator.of(context).pop(),
         ),
@@ -37,7 +37,7 @@ class _ShowAnswersScreenState extends State<ShowAnswersScreen> {
           Container(
             foregroundDecoration: const BoxDecoration(
                 gradient: LinearGradient(
-              colors: [Colors.transparent, Color(0xFF01172F)],
+              colors: [Colors.transparent, Color(0xFF251F47)],
               begin: Alignment.topCenter,
               end: Alignment.bottomCenter,
             )),
@@ -62,7 +62,7 @@ class _ShowAnswersScreenState extends State<ShowAnswersScreen> {
         padding: const EdgeInsets.all(6.0),
         child: ElevatedButton(
           style: ElevatedButton.styleFrom(
-              primary: const Color(0xFF5386E4),
+              primary: const Color(0xFF3083DC),
               fixedSize: Size(MediaQuery.of(context).size.width - 60, 50),
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(15))),

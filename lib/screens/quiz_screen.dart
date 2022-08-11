@@ -37,14 +37,14 @@ class _QuizScreenState extends State<QuizScreen> {
     }
 
     return Scaffold(
-      backgroundColor: const Color(0xFFF4F3EE),
+      backgroundColor: const Color(0xFFFCFCFF),
       appBar: AppBar(
         foregroundColor: Colors.transparent,
         actions: [
           IconButton(
               icon: const Icon(
                 Icons.pause,
-                color: Color(0xFFF4F3EE),
+                color: Color(0xFFFCFCFF),
               ),
               onPressed: () =>
                   showDialog(context: context, builder: _showDialog))
@@ -70,7 +70,7 @@ class _QuizScreenState extends State<QuizScreen> {
                         child: Container(
                           foregroundDecoration: const BoxDecoration(
                               gradient: LinearGradient(
-                            colors: [Colors.transparent, Color(0xFF01172F)],
+                            colors: [Colors.transparent, Color(0xFF251F47)],
                             begin: Alignment.topCenter,
                             end: Alignment.bottomCenter,
                           )),
@@ -97,7 +97,7 @@ class _QuizScreenState extends State<QuizScreen> {
                         child: Container(
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(15),
-                            color: const Color(0xFFF4F3EE),
+                            color: const Color(0xFFFCFCFF),
                           ),
                           child: Padding(
                             padding: const EdgeInsets.symmetric(vertical: 5),
@@ -146,7 +146,7 @@ class _QuizScreenState extends State<QuizScreen> {
                     mainAxisSize: MainAxisSize.min,
                     children: <Widget>[
                       ...options.map((option) => RadioListTile<String>(
-                            activeColor:  const Color(0xFF01172F),
+                            activeColor: const Color(0xFF01172F),
                             title: Text(HtmlUnescape().convert("$option")),
                             value: option,
                             groupValue: _answers[_currentIndex],
@@ -167,7 +167,7 @@ class _QuizScreenState extends State<QuizScreen> {
                 alignment: Alignment.bottomCenter,
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
-                      primary: const Color(0xFF01172F),
+                      primary: const Color(0xFF251F47),
                       fixedSize:
                           Size(MediaQuery.of(context).size.width - 60, 50),
                       shape: RoundedRectangleBorder(
@@ -178,7 +178,7 @@ class _QuizScreenState extends State<QuizScreen> {
                         : "Next",
                     style: const TextStyle(
                         fontSize: 22,
-                        color: Color(0xFFF4F3EE),
+                        color: Color(0xFFFCFCFF),
                         fontWeight: FontWeight.w500),
                   ),
                   onPressed: _nextSubmit,
@@ -194,7 +194,7 @@ class _QuizScreenState extends State<QuizScreen> {
   void _nextSubmit() {
     const snackbar = SnackBar(
       content: Text("You must select an answer to continue."),
-      backgroundColor: Color(0xFF01172F),
+      backgroundColor: Color(0xFF251F47),
       behavior: SnackBarBehavior.floating,
       duration: Duration(seconds: 3),
       margin: EdgeInsets.all(20),
@@ -223,11 +223,11 @@ class _QuizScreenState extends State<QuizScreen> {
 
   Widget _showDialog(BuildContext context) {
     return Dialog(
-      backgroundColor: const Color(0xFFF4F3EE),
+      backgroundColor: const Color(0xFFFCFCFF),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)),
       child: Container(
         decoration: BoxDecoration(
-            color: const Color(0xFF5386E4),
+            color: const Color(0xFF3083DC),
             borderRadius: BorderRadius.circular(20)),
         margin: const EdgeInsets.all(8),
         height: 250,
@@ -239,14 +239,14 @@ class _QuizScreenState extends State<QuizScreen> {
               'Pause',
               style: TextStyle(
                   fontSize: 40,
-                  color: Color(0xFFF4F3EE),
+                  color: Color(0xFFFCFCFF),
                   fontWeight: FontWeight.w700),
             ),
             Padding(
               padding: const EdgeInsets.only(
                   top: 20, bottom: 20, left: 15, right: 15),
               child: Container(
-                color: const Color(0xFF01172F),
+                color: const Color(0xFF251F47),
                 height: 3,
               ),
             ),
@@ -254,7 +254,7 @@ class _QuizScreenState extends State<QuizScreen> {
               padding: const EdgeInsets.symmetric(horizontal: 15),
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
-                    primary: const Color(0xFF01172F),
+                    primary: const Color(0xFF251F47),
                     fixedSize: Size(MediaQuery.of(context).size.width, 45),
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(15))),
@@ -262,7 +262,7 @@ class _QuizScreenState extends State<QuizScreen> {
                   'Continue',
                   style: TextStyle(
                       fontSize: 22,
-                      color: Color(0xFFF4F3EE),
+                      color: Color(0xFFFCFCFF),
                       fontWeight: FontWeight.w500),
                 ),
                 onPressed: () {
@@ -277,7 +277,7 @@ class _QuizScreenState extends State<QuizScreen> {
               padding: const EdgeInsets.symmetric(horizontal: 15),
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
-                    primary: const Color(0xFF01172F),
+                    primary: const Color(0xFF251F47),
                     fixedSize: Size(MediaQuery.of(context).size.width, 45),
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(15))),
@@ -285,7 +285,7 @@ class _QuizScreenState extends State<QuizScreen> {
                   'Exit',
                   style: TextStyle(
                       fontSize: 22,
-                      color: Color(0xFFF4F3EE),
+                      color: Color(0xFFFCFCFF),
                       fontWeight: FontWeight.w500),
                 ),
                 onPressed: () =>
@@ -300,11 +300,11 @@ class _QuizScreenState extends State<QuizScreen> {
 
   Widget _alertDialog(BuildContext context) {
     return Dialog(
-      backgroundColor: const Color(0xFFF4F3EE),
+      backgroundColor: const Color(0xFFFCFCFF),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)),
       child: Container(
         decoration: BoxDecoration(
-            color: const Color(0xFF5386E4),
+            color: const Color(0xFF3083DC),
             borderRadius: BorderRadius.circular(20)),
         margin: const EdgeInsets.all(8),
         height: 250,
@@ -316,7 +316,7 @@ class _QuizScreenState extends State<QuizScreen> {
               'Warning',
               style: TextStyle(
                   fontSize: 36,
-                  color: Color(0xFFF4F3EE),
+                  color: Color(0xFFFCFCFF),
                   fontWeight: FontWeight.w700),
             ),
             const Padding(
@@ -326,7 +326,7 @@ class _QuizScreenState extends State<QuizScreen> {
                 'Are you sure you want to quit the quiz? All your progress will be lost.',
                 style: TextStyle(
                     fontSize: 16,
-                    color: Color(0xFFF4F3EE),
+                    color: Color(0xFFFCFCFF),
                     fontWeight: FontWeight.w400),
               ),
             ),
@@ -338,7 +338,7 @@ class _QuizScreenState extends State<QuizScreen> {
                   padding: const EdgeInsets.symmetric(horizontal: 15),
                   child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
-                        primary: const Color(0xFFF4F3EE),
+                        primary: const Color(0xFFFCFCFF),
                         fixedSize:
                             Size(MediaQuery.of(context).size.width / 4, 45),
                         shape: RoundedRectangleBorder(
@@ -347,7 +347,7 @@ class _QuizScreenState extends State<QuizScreen> {
                       'No',
                       style: TextStyle(
                           fontSize: 22,
-                          color: Color(0xFF01172F),
+                          color: Color(0xFF251F47),
                           fontWeight: FontWeight.w500),
                     ),
                     onPressed: () {
@@ -359,7 +359,7 @@ class _QuizScreenState extends State<QuizScreen> {
                   padding: const EdgeInsets.symmetric(horizontal: 15),
                   child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
-                        primary: const Color(0xFF01172F),
+                        primary: const Color(0xFF251F47),
                         fixedSize:
                             Size(MediaQuery.of(context).size.width / 4, 45),
                         shape: RoundedRectangleBorder(
@@ -368,7 +368,7 @@ class _QuizScreenState extends State<QuizScreen> {
                       'Yes',
                       style: TextStyle(
                           fontSize: 22,
-                          color: Color(0xFFF4F3EE),
+                          color: Color(0xFFFCFCFF),
                           fontWeight: FontWeight.w500),
                     ),
                     onPressed: () {
