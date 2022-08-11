@@ -3,6 +3,7 @@ import 'package:flutter_advanced_drawer/flutter_advanced_drawer.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:quiz_app/models/category.dart';
 import 'package:quiz_app/screens/options_screen.dart';
+import 'package:quiz_app/screens/profile_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -130,12 +131,14 @@ Widget _drawer(BuildContext context) {
                 ),
                 onTap: () => _advancedDrawerController.hideDrawer(),
               ),
-              const ListTile(
-                leading: Icon(Icons.person),
-                title: Text(
+              ListTile(
+                leading: const Icon(Icons.person),
+                title: const Text(
                   'Profile',
                   style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
                 ),
+                onTap: () => Navigator.push(context,
+                    MaterialPageRoute(builder: (_) => const ProfileScreen())),
               ),
               const ListTile(
                 leading: Icon(Icons.star),

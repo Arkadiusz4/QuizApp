@@ -227,7 +227,7 @@ class _QuizScreenState extends State<QuizScreen> {
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)),
       child: Container(
         decoration: BoxDecoration(
-            color: const Color(0xFF3083DC),
+            color: const Color(0xFF251F47),
             borderRadius: BorderRadius.circular(20)),
         margin: const EdgeInsets.all(8),
         height: 250,
@@ -242,19 +242,19 @@ class _QuizScreenState extends State<QuizScreen> {
                   color: Color(0xFFFCFCFF),
                   fontWeight: FontWeight.w700),
             ),
-            Padding(
-              padding: const EdgeInsets.only(
-                  top: 20, bottom: 20, left: 15, right: 15),
-              child: Container(
-                color: const Color(0xFF251F47),
-                height: 3,
-              ),
-            ),
+            // Padding(
+            //   padding: const EdgeInsets.only(
+            //       top: 20, bottom: 20, left: 15, right: 15),
+            //   child: Container(
+            //     color: const Color(0xFF3083DC),
+            //     height: 3,
+            //   ),
+            // ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 15),
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
-                    primary: const Color(0xFF251F47),
+                    primary: const Color(0xFF3083DC),
                     fixedSize: Size(MediaQuery.of(context).size.width, 45),
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(15))),
@@ -277,7 +277,7 @@ class _QuizScreenState extends State<QuizScreen> {
               padding: const EdgeInsets.symmetric(horizontal: 15),
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
-                    primary: const Color(0xFF251F47),
+                    primary: const Color(0xFF3083DC),
                     fixedSize: Size(MediaQuery.of(context).size.width, 45),
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(15))),
@@ -372,8 +372,8 @@ class _QuizScreenState extends State<QuizScreen> {
                           fontWeight: FontWeight.w500),
                     ),
                     onPressed: () {
-                      Navigator.of(context).pushReplacement(
-                          MaterialPageRoute(builder: (_) => HomeScreen()));
+                      Navigator.of(context).pushReplacement(MaterialPageRoute(
+                          builder: (_) => const HomeScreen()));
                     },
                   ),
                 ),
