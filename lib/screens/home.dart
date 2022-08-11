@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_advanced_drawer/flutter_advanced_drawer.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:quiz_app/models/category.dart';
 import 'package:quiz_app/screens/options_screen.dart';
@@ -12,26 +13,50 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  final _advancedDrawerController = AdvancedDrawerController();
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: const Color(0xFFC3DFE0),
-      appBar: AppBar(
+    return AdvancedDrawer(
+      drawer: _drawer(),
+      backdropColor: Color(0xFF01172F),
+      controller: _advancedDrawerController,
+      animationCurve: Curves.easeInOut,
+      animationDuration: const Duration(milliseconds: 300),
+      animateChildDecoration: true,
+      rtlOpening: false,
+      disabledGestures: false,
+      childDecoration: const BoxDecoration(
+        borderRadius: const BorderRadius.all(Radius.circular(16)),
+      ),
+      child: Scaffold(
+        backgroundColor: const Color(0xFFC3DFE0),
+        appBar: AppBar(
           leading: IconButton(
-        icon: const Icon(
-          Icons.menu,
-          color: Color(0xFFC3DFE0),
+            onPressed: () => _advancedDrawerController.showDrawer(),
+            icon: ValueListenableBuilder<AdvancedDrawerValue>(
+              valueListenable: _advancedDrawerController,
+              builder: (_, value, __) {
+                return AnimatedSwitcher(
+                  duration: Duration(milliseconds: 250),
+                  child: Icon(
+                    value.visible ? Icons.clear : Icons.menu,
+                    key: ValueKey<bool>(value.visible),
+                  ),
+                );
+              },
+            ),
+          ),
         ),
-        onPressed: () {},
-      )),
-      body: GridView.builder(
-        itemCount: categories.length,
-        itemBuilder: (context, index) => _buildList(index),
-        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-            childAspectRatio: 3 / 4,
-            crossAxisCount: 2,
-            mainAxisSpacing: 5,
-            crossAxisSpacing: 5),
+        body: GridView.builder(
+          itemCount: categories.length,
+          itemBuilder: (context, index) => _buildList(index),
+          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+              childAspectRatio: 3 / 4,
+              crossAxisCount: 2,
+              mainAxisSpacing: 5,
+              crossAxisSpacing: 5),
+        ),
       ),
     );
   }
@@ -85,4 +110,8 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
     );
   }
+}
+
+Widget _drawer() {
+  return Container();
 }
