@@ -5,8 +5,7 @@ import 'package:quiz_app/models/category.dart';
 import 'package:quiz_app/screens/options_screen.dart';
 
 class HomeScreen extends StatefulWidget {
-  // ignore: use_key_in_widget_constructors
-  const HomeScreen();
+  const HomeScreen({Key? key}) : super(key: key);
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
@@ -14,11 +13,10 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   final _advancedDrawerController = AdvancedDrawerController();
-
   @override
   Widget build(BuildContext context) {
     return AdvancedDrawer(
-      drawer: _drawer(),
+      drawer: _drawer(context),
       backdropColor: const Color(0xFFFCFCFF),
       controller: _advancedDrawerController,
       animationCurve: Curves.easeInOut,
@@ -112,32 +110,71 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 }
 
-Widget _drawer() {
-  return ListTileTheme(
-    child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        mainAxisSize: MainAxisSize.max,
-        children: const [
-          ListTile(
-            leading: Icon(Icons.home),
-            title: Text('Home'),
-          ),
-          ListTile(
-            leading: Icon(Icons.home),
-            title: Text('Home'),
-          ),
-          ListTile(
-            leading: Icon(Icons.home),
-            title: Text('Home'),
-          ),
-          ListTile(
-            leading: Icon(Icons.home),
-            title: Text('Home'),
-          ),
-          ListTile(
-            leading: Icon(Icons.home),
-            title: Text('Home'),
-          ),
-        ]),
+Widget _drawer(BuildContext context) {
+  final _advancedDrawerController = AdvancedDrawerController();
+  return SafeArea(
+    child: ListTileTheme(
+      iconColor: const Color(0xFF251F47),
+      textColor: const Color(0xFF251F47),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 15),
+        child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisSize: MainAxisSize.max,
+            children: [
+              ListTile(
+                leading: const Icon(Icons.home),
+                title: const Text(
+                  'Home',
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
+                ),
+                onTap: () => _advancedDrawerController.hideDrawer(),
+              ),
+              const ListTile(
+                leading: Icon(Icons.person),
+                title: Text(
+                  'Profile',
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
+                ),
+              ),
+              const ListTile(
+                leading: Icon(Icons.star),
+                title: Text(
+                  'Achivements',
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 15),
+                child: Container(
+                  height: 2,
+                  color: const Color(0xFF251F47),
+                ),
+              ),
+              const ListTile(
+                leading: Icon(Icons.settings),
+                title: Text(
+                  'Settings',
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
+                ),
+              ),
+              const ListTile(
+                leading: Icon(Icons.info),
+                title: Text(
+                  'About',
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
+                ),
+              ),
+              const Spacer(),
+              const ListTile(
+                leading: Icon(Icons.logout),
+                title: Text(
+                  'Log out',
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
+                ),
+              ),
+            ]),
+      ),
+    ),
   );
 }

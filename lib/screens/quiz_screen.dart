@@ -372,8 +372,8 @@ class _QuizScreenState extends State<QuizScreen> {
                           fontWeight: FontWeight.w500),
                     ),
                     onPressed: () {
-                      Navigator.of(context).pushReplacement(MaterialPageRoute(
-                          builder: (_) => const HomeScreen()));
+                      Navigator.of(context).pushReplacement(
+                          MaterialPageRoute(builder: (_) => HomeScreen()));
                     },
                   ),
                 ),
