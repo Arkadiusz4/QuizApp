@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:quiz_app/screens/home.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:quiz_app/screens/login_screen.dart';
 
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
         colorScheme:
             ColorScheme.fromSwatch().copyWith(primary: const Color(0xFF01172F)),
       ),
-      home: const HomeScreen(),
+      home: const LoginScreen(),
     );
   }
 }
