@@ -29,7 +29,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   child: Text(
                     'Login',
                     style: TextStyle(
-                        fontSize: 50,
+                        fontSize: 60,
                         fontWeight: FontWeight.w700,
                         color: Color(0xFF251F47)),
                   ),
@@ -38,7 +38,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   padding: EdgeInsets.only(top: 10, left: 20),
                   child: Text(
                     'Please sign in to continue.',
-                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.w400),
+                    style: TextStyle(fontSize: 22, fontWeight: FontWeight.w400),
                   ),
                 ),
                 Padding(
@@ -48,6 +48,9 @@ class _LoginScreenState extends State<LoginScreen> {
                     keyboardType: TextInputType.emailAddress,
                     decoration: InputDecoration(
                       label: const Text('Email'),
+                      hintStyle: const TextStyle(color: Color(0xFF251F47)),
+                      prefixIcon: const Icon(Icons.email),
+                      prefixIconColor: const Color(0xFF251F47),
                       enabledBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10),
                         borderSide: const BorderSide(
@@ -77,6 +80,9 @@ class _LoginScreenState extends State<LoginScreen> {
                     obscureText: true,
                     decoration: InputDecoration(
                       label: const Text('Password'),
+                      prefixIcon: const Icon(Icons.lock),
+                      prefixIconColor: const Color(0xFF251F47),
+                      hintStyle: const TextStyle(color: Color(0xFF251F47)),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10),
                       ),
@@ -97,7 +103,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     child: Text(
                       'Forget Password?',
                       style: TextStyle(
-                          fontSize: 14,
+                          fontSize: 18,
                           fontWeight: FontWeight.w600,
                           color: Color(0xFF251F47)),
                     ),
@@ -110,86 +116,104 @@ class _LoginScreenState extends State<LoginScreen> {
                     child: ElevatedButton(
                       style: ElevatedButton.styleFrom(
                         primary: const Color(0xFF251F47),
-                        fixedSize: Size(MediaQuery.of(context).size.width, 45),
+                        fixedSize: Size(MediaQuery.of(context).size.width, 55),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(15),
                         ),
                       ),
-                      child: Text('Sign In'),
+                      child: const Text(
+                        'Sign In',
+                        style: TextStyle(
+                            fontSize: 22, fontWeight: FontWeight.w600),
+                      ),
                       onPressed: () {},
                     ),
                   ),
                 ),
                 Center(
-                    child: Column(
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.only(top: 60),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 20),
-                            child: Container(
-                              height: 2,
-                              width: MediaQuery.of(context).size.width / 3,
-                              color: const Color(0xFF251F47),
+                  child: Column(
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(top: 60),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Padding(
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 20),
+                              child: Container(
+                                height: 2,
+                                width: MediaQuery.of(context).size.width / 3,
+                                color: const Color(0xFF251F47),
+                              ),
                             ),
-                          ),
-                          const Text(
-                            'or',
-                            style: TextStyle(
-                                fontSize: 18, fontWeight: FontWeight.w400),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 20),
-                            child: Container(
-                              height: 2,
-                              width: MediaQuery.of(context).size.width / 3,
-                              color: const Color(0xFF251F47),
+                            const Text(
+                              'or',
+                              style: TextStyle(
+                                  fontSize: 18, fontWeight: FontWeight.w400),
                             ),
-                          ),
-                        ],
+                            Padding(
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 20),
+                              child: Container(
+                                height: 2,
+                                width: MediaQuery.of(context).size.width / 3,
+                                color: const Color(0xFF251F47),
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
-                    ),
-                    const Padding(
-                      padding: EdgeInsets.only(top: 30),
-                      child: Text(
-                        'Login with',
-                        style: TextStyle(
-                            fontSize: 20,
-                            fontWeight: FontWeight.w500,
-                            color: Color(0xFF251F47)),
+                      const Padding(
+                        padding: EdgeInsets.only(top: 30),
+                        child: Text(
+                          'Login with',
+                          style: TextStyle(
+                              fontSize: 20,
+                              fontWeight: FontWeight.w500,
+                              color: Color(0xFF251F47)),
+                        ),
                       ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 15),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          IconButton(
-                              onPressed: () {},
-                              icon: const Icon(
-                                Icons.facebook,
-                                color: Color(0xFF251F47),
-                                size: 40,
-                              )),
-                          const SizedBox(
-                            width: 10,
-                          ),
-                          IconButton(
-                              onPressed: () {},
-                              icon: const Icon(
-                                Icons.email,
-                                color: Color(0xFF251F47),
-                                size: 40,
-                              )),
-                        ],
+                      Padding(
+                        padding: const EdgeInsets.only(top: 15),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            IconButton(
+                                onPressed: () {},
+                                icon: const Icon(
+                                  Icons.facebook,
+                                  color: Color(0xFF251F47),
+                                  size: 40,
+                                )),
+                            const SizedBox(
+                              width: 10,
+                            ),
+                            IconButton(
+                                onPressed: () {},
+                                icon: const Icon(
+                                  Icons.email,
+                                  color: Color(0xFF251F47),
+                                  size: 40,
+                                )),
+                          ],
+                        ),
                       ),
-                    ),
-                  ],
-                ))
+                      Padding(
+                        padding: const EdgeInsets.only(top: 40),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.end,
+                          children: const [
+                            Text('Don\'t have an account?'),
+                            Text('Create one.'),
+                          ],
+                        ),
+                      )
+                    ],
+                  ),
+                ),
               ],
             ),
           ),
