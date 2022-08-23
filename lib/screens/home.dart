@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_advanced_drawer/flutter_advanced_drawer.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -169,12 +170,15 @@ Widget _drawer(BuildContext context) {
                 ),
               ),
               const Spacer(),
-              const ListTile(
-                leading: Icon(Icons.logout),
-                title: Text(
+              ListTile(
+                leading: const Icon(Icons.logout),
+                title: const Text(
                   'Log out',
                   style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
                 ),
+                onTap: () {
+                  FirebaseAuth.instance.signOut();
+                },
               ),
             ]),
       ),
