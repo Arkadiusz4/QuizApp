@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -8,9 +9,17 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  TextEditingController passwordController = TextEditingController();
-  TextEditingController emailController = TextEditingController();
+  final _passwordController = TextEditingController();
+  final _emailController = TextEditingController();
   final _form = GlobalKey<FormState>();
+
+  @override
+  void dispose() {
+    _emailController.dispose();
+    _passwordController.dispose();
+
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +40,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     style: TextStyle(
                         fontSize: 60,
                         fontWeight: FontWeight.w700,
-                        color: Color(0xFF251F47)),
+                        color: Color(0xFF3083DC)),
                   ),
                 ),
                 const Padding(
@@ -44,7 +53,8 @@ class _LoginScreenState extends State<LoginScreen> {
                 Padding(
                   padding: const EdgeInsets.only(left: 20, right: 20, top: 40),
                   child: TextFormField(
-                    controller: emailController,
+                    controller: _emailController,
+                    textInputAction: TextInputAction.next,
                     keyboardType: TextInputType.emailAddress,
                     decoration: InputDecoration(
                       label: const Text('Email'),
@@ -76,8 +86,9 @@ class _LoginScreenState extends State<LoginScreen> {
                 Padding(
                   padding: const EdgeInsets.only(left: 20, right: 20, top: 10),
                   child: TextField(
-                    controller: passwordController,
+                    controller: _passwordController,
                     obscureText: true,
+                    textInputAction: TextInputAction.done,
                     decoration: InputDecoration(
                       label: const Text('Password'),
                       prefixIcon: const Icon(Icons.lock),
@@ -105,7 +116,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       style: TextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.w600,
-                          color: Color(0xFF251F47)),
+                          color: Color(0xFF3083DC)),
                     ),
                   ),
                 ),
@@ -116,7 +127,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     child: ElevatedButton(
                       style: ElevatedButton.styleFrom(
                         primary: const Color(0xFF251F47),
-                        fixedSize: Size(MediaQuery.of(context).size.width, 55),
+                        fixedSize: Size(MediaQuery.of(context).size.width, 60),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(15),
                         ),
@@ -124,9 +135,9 @@ class _LoginScreenState extends State<LoginScreen> {
                       child: const Text(
                         'Sign In',
                         style: TextStyle(
-                            fontSize: 22, fontWeight: FontWeight.w600),
+                            fontSize: 26, fontWeight: FontWeight.w600),
                       ),
-                      onPressed: () {},
+                      onPressed: login,
                     ),
                   ),
                 ),
@@ -184,19 +195,20 @@ class _LoginScreenState extends State<LoginScreen> {
                                 onPressed: () {},
                                 icon: const Icon(
                                   Icons.facebook,
-                                  color: Color(0xFF251F47),
+                                  color: Color(0xFF3083DC),
                                   size: 40,
                                 )),
                             const SizedBox(
-                              width: 10,
+                              width: 20,
                             ),
                             IconButton(
-                                onPressed: () {},
-                                icon: const Icon(
-                                  Icons.email,
-                                  color: Color(0xFF251F47),
-                                  size: 40,
-                                )),
+                              onPressed: () {},
+                              icon: const Icon(
+                                Icons.email,
+                                color: Color(0xFF3083DC),
+                                size: 40,
+                              ),
+                            ),
                           ],
                         ),
                       ),
@@ -206,11 +218,24 @@ class _LoginScreenState extends State<LoginScreen> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           crossAxisAlignment: CrossAxisAlignment.end,
                           children: const [
-                            Text('Don\'t have an account?'),
-                            Text('Create one.'),
+                            Text(
+                              'Don\'t have an account?',
+                              style: TextStyle(
+                                  fontSize: 16, fontWeight: FontWeight.w500),
+                            ),
+                            SizedBox(
+                              width: 5,
+                            ),
+                            Text(
+                              'Create one.',
+                              style: TextStyle(
+                                  fontSize: 16,
+                                  color: Color(0xFF3083DC),
+                                  fontWeight: FontWeight.w700),
+                            ),
                           ],
                         ),
-                      )
+                      ),
                     ],
                   ),
                 ),
@@ -220,5 +245,26 @@ class _LoginScreenState extends State<LoginScreen> {
         ),
       ),
     );
+  }
+
+  Future login() async {
+    // await FirebaseAuth.instance.signInWithEmailAndPassword(
+    //   email: emailController.text.trim(),
+    //   password: passwordController.text.trim(),
+    // );
+
+    await FirebaseAuth.instance.signInWithEmailAndPassword(
+      email: _emailController.text.trim(),
+      password: _passwordController.text.trim(),
+    );
+    // try {
+
+    // } on FirebaseAuthException catch (e) {
+    //   if (e.code == 'user-not-found') {
+    //     print('No user found for that email.');
+    //   } else if (e.code == 'wrong-password') {
+    //     print('Wrong password provided for that user.');
+    //   }
+    // }
   }
 }

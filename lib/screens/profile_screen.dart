@@ -33,7 +33,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
             width: double.infinity,
             color: Colors.red,
             child: Column(
-              children: [Text('sfaff'), Text('sfaff'), Text('sfaff')],
+              children: const [Text('sfaff'), Text('sfaff'), Text('sfaff')],
             ),
           ),
         ]),
