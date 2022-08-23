@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_advanced_drawer/flutter_advanced_drawer.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:quiz_app/models/category.dart';
-import 'package:quiz_app/screens/options_screen.dart';
+import 'package:quiz_app/screens/quiz_screens/options_screen.dart';
 import 'package:quiz_app/screens/profile_screen.dart';
 
 class HomeScreen extends StatefulWidget {

@@ -3,7 +3,7 @@ import 'package:html_unescape/html_unescape_small.dart';
 import 'package:quiz_app/models/category.dart';
 import 'package:quiz_app/models/question_model.dart';
 import 'package:quiz_app/screens/home.dart';
-import 'package:quiz_app/screens/result_screen.dart';
+import 'package:quiz_app/screens/quiz_screens/result_screen.dart';
 
 class QuizScreen extends StatefulWidget {
   const QuizScreen(

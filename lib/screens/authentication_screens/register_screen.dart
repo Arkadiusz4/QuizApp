@@ -1,14 +1,16 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
-class LoginScreen extends StatefulWidget {
-  const LoginScreen({Key? key}) : super(key: key);
+class RegisterScreen extends StatefulWidget {
+  final VoidCallback showLoginScreen;
+
+  const RegisterScreen({Key? key, required this.showLoginScreen})
+      : super(key: key);
 
   @override
-  State<LoginScreen> createState() => _LoginScreenState();
+  State<RegisterScreen> createState() => _RegisterScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _RegisterScreenState extends State<RegisterScreen> {
   final _passwordController = TextEditingController();
   final _emailController = TextEditingController();
   final _form = GlobalKey<FormState>();
@@ -20,6 +22,8 @@ class _LoginScreenState extends State<LoginScreen> {
 
     super.dispose();
   }
+
+  Future register() async {}
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +40,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 const Padding(
                   padding: EdgeInsets.only(left: 20, top: 50),
                   child: Text(
-                    'Login',
+                    'Create an account.',
                     style: TextStyle(
                         fontSize: 60,
                         fontWeight: FontWeight.w700,
@@ -137,7 +141,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         style: TextStyle(
                             fontSize: 26, fontWeight: FontWeight.w600),
                       ),
-                      onPressed: login,
+                      onPressed: register,
                     ),
                   ),
                 ),
@@ -213,25 +217,28 @@ class _LoginScreenState extends State<LoginScreen> {
                         ),
                       ),
                       Padding(
-                        padding: const EdgeInsets.only(top: 40),
+                        padding: const EdgeInsets.only(top: 40, bottom: 40),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           crossAxisAlignment: CrossAxisAlignment.end,
-                          children: const [
-                            Text(
+                          children: [
+                            const Text(
                               'Don\'t have an account?',
                               style: TextStyle(
                                   fontSize: 16, fontWeight: FontWeight.w500),
                             ),
-                            SizedBox(
+                            const SizedBox(
                               width: 5,
                             ),
-                            Text(
-                              'Create one.',
-                              style: TextStyle(
-                                  fontSize: 16,
-                                  color: Color(0xFF3083DC),
-                                  fontWeight: FontWeight.w700),
+                            GestureDetector(
+                              onTap: widget.showLoginScreen,
+                              child: const Text(
+                                'Create one.',
+                                style: TextStyle(
+                                    fontSize: 16,
+                                    color: Color(0xFF3083DC),
+                                    fontWeight: FontWeight.w700),
+                              ),
                             ),
                           ],
                         ),
@@ -245,26 +252,5 @@ class _LoginScreenState extends State<LoginScreen> {
         ),
       ),
     );
-  }
-
-  Future login() async {
-    // await FirebaseAuth.instance.signInWithEmailAndPassword(
-    //   email: emailController.text.trim(),
-    //   password: passwordController.text.trim(),
-    // );
-
-    await FirebaseAuth.instance.signInWithEmailAndPassword(
-      email: _emailController.text.trim(),
-      password: _passwordController.text.trim(),
-    );
-    // try {
-
-    // } on FirebaseAuthException catch (e) {
-    //   if (e.code == 'user-not-found') {
-    //     print('No user found for that email.');
-    //   } else if (e.code == 'wrong-password') {
-    //     print('Wrong password provided for that user.');
-    //   }
-    // }
   }
 }

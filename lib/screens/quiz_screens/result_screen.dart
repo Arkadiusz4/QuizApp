@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:quiz_app/models/category.dart';
 import 'package:quiz_app/models/question_model.dart';
 import 'package:quiz_app/screens/home.dart';
-import 'package:quiz_app/screens/options_screen.dart';
-import 'package:quiz_app/screens/show_answers_screen.dart';
+import 'package:quiz_app/screens/quiz_screens/options_screen.dart';
+import 'package:quiz_app/screens/quiz_screens/show_answers_screen.dart';
 import 'package:quiz_app/widgets/column_with_icon.dart';
 import 'package:quiz_app/widgets/result_column.dart';
 

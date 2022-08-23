@@ -3,7 +3,7 @@ import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'package:quiz_app/api/question_api.dart';
 import 'package:quiz_app/models/category.dart';
 import 'package:quiz_app/models/question_model.dart';
-import 'package:quiz_app/screens/quiz_screen.dart';
+import 'package:quiz_app/screens/quiz_screens/quiz_screen.dart';
 import 'package:quiz_app/widgets/options_button.dart';
 
 class OptionsScreen extends StatefulWidget {
