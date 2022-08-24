@@ -1,4 +1,8 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:loading_animation_widget/loading_animation_widget.dart';
+import 'package:quiz_app/main.dart';
+import 'package:quiz_app/widgets/text_form_field.dart';
 
 class RegisterScreen extends StatefulWidget {
   final VoidCallback showLoginScreen;
@@ -12,7 +16,10 @@ class RegisterScreen extends StatefulWidget {
 
 class _RegisterScreenState extends State<RegisterScreen> {
   final _passwordController = TextEditingController();
+  final _confirmPasswordController = TextEditingController();
+
   final _emailController = TextEditingController();
+  final _usernameController = TextEditingController();
   final _form = GlobalKey<FormState>();
 
   @override
@@ -23,7 +30,33 @@ class _RegisterScreenState extends State<RegisterScreen> {
     super.dispose();
   }
 
-  Future register() async {}
+  Future register() async {
+    showDialog(
+        context: context,
+        barrierDismissible: false,
+        builder: (context) => Center(
+              child: Container(
+                decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(20)),
+                height: 250,
+                width: 250,
+                child: LoadingAnimationWidget.dotsTriangle(
+                    color: const Color(0xFF3083DC), size: 100),
+              ),
+            ));
+
+    try {
+      await FirebaseAuth.instance.createUserWithEmailAndPassword(
+        email: _emailController.text.trim(),
+        password: _passwordController.text.trim(),
+      );
+    } on FirebaseAuthException catch (e) {
+      print(e);
+    }
+
+    navigatorKey.currentState!.popUntil((route) => route.isFirst);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -40,7 +73,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 const Padding(
                   padding: EdgeInsets.only(left: 20, top: 50),
                   child: Text(
-                    'Create an account.',
+                    'Register',
                     style: TextStyle(
                         fontSize: 60,
                         fontWeight: FontWeight.w700,
@@ -50,9 +83,16 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 const Padding(
                   padding: EdgeInsets.only(top: 10, left: 20),
                   child: Text(
-                    'Please sign in to continue.',
+                    'Please sign up to continue.',
                     style: TextStyle(fontSize: 22, fontWeight: FontWeight.w400),
                   ),
+                ),
+                CustomTextFormField(
+                  controller: _usernameController,
+                  textInputAction: TextInputAction.next,
+                  textInputType: TextInputType.text,
+                  labelText: 'Username',
+                  prefixIcon: const Icon(Icons.person),
                 ),
                 Padding(
                   padding: const EdgeInsets.only(left: 20, right: 20, top: 40),
@@ -92,6 +132,30 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   child: TextField(
                     controller: _passwordController,
                     obscureText: true,
+                    textInputAction: TextInputAction.next,
+                    decoration: InputDecoration(
+                      label: const Text('Password'),
+                      prefixIcon: const Icon(Icons.lock),
+                      prefixIconColor: const Color(0xFF251F47),
+                      hintStyle: const TextStyle(color: Color(0xFF251F47)),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      enabledBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(10),
+                        borderSide: const BorderSide(
+                          color: Color(0xFF251F47),
+                          width: 2.0,
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(left: 20, right: 20, top: 10),
+                  child: TextField(
+                    controller: _confirmPasswordController,
+                    obscureText: true,
                     textInputAction: TextInputAction.done,
                     decoration: InputDecoration(
                       label: const Text('Password'),
@@ -111,19 +175,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     ),
                   ),
                 ),
-                const Align(
-                  alignment: Alignment.centerRight,
-                  child: Padding(
-                    padding: EdgeInsets.only(right: 20, top: 10),
-                    child: Text(
-                      'Forget Password?',
-                      style: TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.w600,
-                          color: Color(0xFF3083DC)),
-                    ),
-                  ),
-                ),
                 Center(
                   child: Padding(
                     padding:
@@ -137,7 +188,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         ),
                       ),
                       child: const Text(
-                        'Sign In',
+                        'Sign Up',
                         style: TextStyle(
                             fontSize: 26, fontWeight: FontWeight.w600),
                       ),
@@ -182,7 +233,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       const Padding(
                         padding: EdgeInsets.only(top: 30),
                         child: Text(
-                          'Login with',
+                          'Register with',
                           style: TextStyle(
                               fontSize: 20,
                               fontWeight: FontWeight.w500,
@@ -223,7 +274,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           crossAxisAlignment: CrossAxisAlignment.end,
                           children: [
                             const Text(
-                              'Don\'t have an account?',
+                              'Already have an account?',
                               style: TextStyle(
                                   fontSize: 16, fontWeight: FontWeight.w500),
                             ),
@@ -233,7 +284,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             GestureDetector(
                               onTap: widget.showLoginScreen,
                               child: const Text(
-                                'Create one.',
+                                'Sign In!',
                                 style: TextStyle(
                                     fontSize: 16,
                                     color: Color(0xFF3083DC),
