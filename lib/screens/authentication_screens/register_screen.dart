@@ -81,7 +81,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   ),
                 ),
                 const Padding(
-                  padding: EdgeInsets.only(top: 10, left: 20),
+                  padding: EdgeInsets.only(top: 10, left: 20, bottom: 40),
                   child: Text(
                     'Please sign up to continue.',
                     style: TextStyle(fontSize: 22, fontWeight: FontWeight.w400),
@@ -93,87 +93,43 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   textInputType: TextInputType.text,
                   labelText: 'Username',
                   prefixIcon: const Icon(Icons.person),
+                  validator: null,
+                  obscurText: false,
                 ),
-                Padding(
-                  padding: const EdgeInsets.only(left: 20, right: 20, top: 40),
-                  child: TextFormField(
-                    controller: _emailController,
-                    textInputAction: TextInputAction.next,
-                    keyboardType: TextInputType.emailAddress,
-                    decoration: InputDecoration(
-                      label: const Text('Email'),
-                      hintStyle: const TextStyle(color: Color(0xFF251F47)),
-                      prefixIcon: const Icon(Icons.email),
-                      prefixIconColor: const Color(0xFF251F47),
-                      enabledBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10),
-                        borderSide: const BorderSide(
-                          color: Color(0xFF251F47),
-                          width: 2.0,
-                        ),
-                      ),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                    ),
-                    validator: (value) {
-                      if (value!.isEmpty) {
-                        return 'This field is required.';
-                      }
-                      if (!RegExp(r'\S+@\S+\.\S+').hasMatch(value)) {
-                        return 'Please enter a valid email address.';
-                      }
-                      return null;
-                    },
-                  ),
+                CustomTextFormField(
+                  controller: _emailController,
+                  textInputAction: TextInputAction.next,
+                  textInputType: TextInputType.emailAddress,
+                  labelText: 'Email',
+                  prefixIcon: const Icon(Icons.email),
+                  validator: (value) {
+                    if (value!.isEmpty) {
+                      return 'This field is required.';
+                    }
+                    if (!RegExp(r'\S+@\S+\.\S+').hasMatch(value)) {
+                      return 'Please enter a valid email address.';
+                    }
+                    return null;
+                  },
+                  obscurText: false,
                 ),
-                Padding(
-                  padding: const EdgeInsets.only(left: 20, right: 20, top: 10),
-                  child: TextField(
-                    controller: _passwordController,
-                    obscureText: true,
-                    textInputAction: TextInputAction.next,
-                    decoration: InputDecoration(
-                      label: const Text('Password'),
-                      prefixIcon: const Icon(Icons.lock),
-                      prefixIconColor: const Color(0xFF251F47),
-                      hintStyle: const TextStyle(color: Color(0xFF251F47)),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      enabledBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10),
-                        borderSide: const BorderSide(
-                          color: Color(0xFF251F47),
-                          width: 2.0,
-                        ),
-                      ),
-                    ),
-                  ),
+                CustomTextFormField(
+                  controller: _passwordController,
+                  textInputAction: TextInputAction.next,
+                  textInputType: TextInputType.text,
+                  labelText: 'Password',
+                  prefixIcon: const Icon(Icons.lock),
+                  validator: null,
+                  obscurText: true,
                 ),
-                Padding(
-                  padding: const EdgeInsets.only(left: 20, right: 20, top: 10),
-                  child: TextField(
-                    controller: _confirmPasswordController,
-                    obscureText: true,
-                    textInputAction: TextInputAction.done,
-                    decoration: InputDecoration(
-                      label: const Text('Password'),
-                      prefixIcon: const Icon(Icons.lock),
-                      prefixIconColor: const Color(0xFF251F47),
-                      hintStyle: const TextStyle(color: Color(0xFF251F47)),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      enabledBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10),
-                        borderSide: const BorderSide(
-                          color: Color(0xFF251F47),
-                          width: 2.0,
-                        ),
-                      ),
-                    ),
-                  ),
+                CustomTextFormField(
+                  controller: _confirmPasswordController,
+                  textInputAction: TextInputAction.done,
+                  textInputType: TextInputType.text,
+                  labelText: 'Confirm Password',
+                  prefixIcon: const Icon(Icons.lock),
+                  validator: null,
+                  obscurText: true,
                 ),
                 Center(
                   child: Padding(
