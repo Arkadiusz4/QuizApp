@@ -75,16 +75,17 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   child: Text(
                     'Register',
                     style: TextStyle(
-                        fontSize: 60,
-                        fontWeight: FontWeight.w700,
-                        color: Color(0xFF3083DC)),
+                      fontSize: 50,
+                      fontWeight: FontWeight.w700,
+                      color: Color(0xFF3083DC),
+                    ),
                   ),
                 ),
                 const Padding(
                   padding: EdgeInsets.only(top: 10, left: 20, bottom: 40),
                   child: Text(
                     'Please sign up to continue.',
-                    style: TextStyle(fontSize: 22, fontWeight: FontWeight.w400),
+                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.w400),
                   ),
                 ),
                 CustomTextFormField(

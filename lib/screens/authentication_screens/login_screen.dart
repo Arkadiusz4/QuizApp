@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'package:quiz_app/main.dart';
+import 'package:quiz_app/widgets/text_form_field.dart';
 
 class LoginScreen extends StatefulWidget {
   final VoidCallback showRegisterScreen;
@@ -79,40 +80,24 @@ class _LoginScreenState extends State<LoginScreen> {
                   child: Text(
                     'Login',
                     style: TextStyle(
-                        fontSize: 60,
+                        fontSize: 50,
                         fontWeight: FontWeight.w700,
                         color: Color(0xFF3083DC)),
                   ),
                 ),
                 const Padding(
-                  padding: EdgeInsets.only(top: 10, left: 20),
+                  padding: EdgeInsets.only(top: 10, left: 20, bottom: 40),
                   child: Text(
                     'Please sign in to continue.',
-                    style: TextStyle(fontSize: 22, fontWeight: FontWeight.w400),
+                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.w400),
                   ),
                 ),
-                Padding(
-                  padding: const EdgeInsets.only(left: 20, right: 20, top: 40),
-                  child: TextFormField(
+                CustomTextFormField(
                     controller: _emailController,
                     textInputAction: TextInputAction.next,
-                    keyboardType: TextInputType.emailAddress,
-                    decoration: InputDecoration(
-                      label: const Text('Email'),
-                      hintStyle: const TextStyle(color: Color(0xFF251F47)),
-                      prefixIcon: const Icon(Icons.email),
-                      prefixIconColor: const Color(0xFF251F47),
-                      enabledBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10),
-                        borderSide: const BorderSide(
-                          color: Color(0xFF251F47),
-                          width: 2.0,
-                        ),
-                      ),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                    ),
+                    textInputType: TextInputType.emailAddress,
+                    labelText: 'Email',
+                    prefixIcon: const Icon(Icons.email),
                     validator: (value) {
                       if (value!.isEmpty) {
                         return 'This field is required.';
@@ -122,32 +107,15 @@ class _LoginScreenState extends State<LoginScreen> {
                       }
                       return null;
                     },
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(left: 20, right: 20, top: 10),
-                  child: TextField(
+                    obscurText: false),
+                CustomTextFormField(
                     controller: _passwordController,
-                    obscureText: true,
                     textInputAction: TextInputAction.done,
-                    decoration: InputDecoration(
-                      label: const Text('Password'),
-                      prefixIcon: const Icon(Icons.lock),
-                      prefixIconColor: const Color(0xFF251F47),
-                      hintStyle: const TextStyle(color: Color(0xFF251F47)),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      enabledBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10),
-                        borderSide: const BorderSide(
-                          color: Color(0xFF251F47),
-                          width: 2.0,
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
+                    textInputType: TextInputType.text,
+                    labelText: 'Password',
+                    prefixIcon: const Icon(Icons.email),
+                    validator: null,
+                    obscurText: true),
                 const Align(
                   alignment: Alignment.centerRight,
                   child: Padding(
