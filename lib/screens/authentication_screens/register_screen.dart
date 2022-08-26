@@ -1,3 +1,4 @@
+import 'package:email_validator/email_validator.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
@@ -31,6 +32,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
   }
 
   Future register() async {
+    final isVaild = _form.currentState!.validate();
+    if (!isVaild) return;
+
     showDialog(
         context: context,
         barrierDismissible: false,
@@ -106,8 +110,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   validator: (value) {
                     if (value!.isEmpty) {
                       return 'This field is required.';
-                    }
-                    if (!RegExp(r'\S+@\S+\.\S+').hasMatch(value)) {
+                    } else if (!EmailValidator.validate(value)) {
                       return 'Please enter a valid email address.';
                     }
                     return null;
@@ -120,7 +123,13 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   textInputType: TextInputType.text,
                   labelText: 'Password',
                   prefixIcon: const Icon(Icons.lock),
-                  validator: null,
+                  validator: (value) {
+                    if (value!.isEmpty) {
+                      return 'This field is required.';
+                    } else if (value.length < 6) {
+                      return 'Password must be longer than 6 characters.';
+                    }
+                  },
                   obscurText: true,
                 ),
                 CustomTextFormField(
