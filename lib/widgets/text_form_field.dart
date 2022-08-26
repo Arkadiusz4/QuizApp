@@ -28,6 +28,7 @@ class CustomTextFormField extends StatelessWidget {
         controller: controller,
         textInputAction: textInputAction,
         keyboardType: textInputType,
+        autovalidateMode: AutovalidateMode.onUserInteraction,
         decoration: InputDecoration(
           label: Text(labelText),
           hintStyle: const TextStyle(color: Color(0xFF251F47)),
