@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'package:quiz_app/main.dart';
 import 'package:quiz_app/screens/authentication_screens/forget_password_screen.dart';
-import 'package:quiz_app/screens/utils.dart';
+import 'package:quiz_app/screens/auth/utils.dart';
 import 'package:quiz_app/widgets/text_form_field.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -53,7 +53,8 @@ class _LoginScreenState extends State<LoginScreen> {
     } on FirebaseAuthException catch (e) {
       print(e);
 
-      Utils.showSnackBar(e.message);
+      Utils.showSnackBar(e.message, Colors.red);
+      navigatorKey.currentState!.popUntil((route) => route.isFirst);
     }
 
     navigatorKey.currentState!.popUntil((route) => route.isFirst);
