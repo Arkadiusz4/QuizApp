@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'package:quiz_app/main.dart';
+import 'package:quiz_app/screens/utils.dart';
 import 'package:quiz_app/widgets/text_form_field.dart';
 
 class RegisterScreen extends StatefulWidget {
@@ -18,7 +19,6 @@ class RegisterScreen extends StatefulWidget {
 class _RegisterScreenState extends State<RegisterScreen> {
   final _passwordController = TextEditingController();
   final _confirmPasswordController = TextEditingController();
-
   final _emailController = TextEditingController();
   final _usernameController = TextEditingController();
   final _form = GlobalKey<FormState>();
@@ -57,6 +57,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
       );
     } on FirebaseAuthException catch (e) {
       print(e);
+
+      Utils.showSnackBar(e.message);
     }
 
     navigatorKey.currentState!.popUntil((route) => route.isFirst);
@@ -98,7 +100,12 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   textInputType: TextInputType.text,
                   labelText: 'Username',
                   prefixIcon: const Icon(Icons.person),
-                  validator: null,
+                  validator: (value) {
+                    if (value!.isEmpty) {
+                      return 'This field is required.';
+                    }
+                    return null;
+                  },
                   obscurText: false,
                 ),
                 CustomTextFormField(
@@ -129,6 +136,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     } else if (value.length < 6) {
                       return 'Password must be longer than 6 characters.';
                     }
+                    return null;
                   },
                   obscurText: true,
                 ),
@@ -138,7 +146,12 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   textInputType: TextInputType.text,
                   labelText: 'Confirm Password',
                   prefixIcon: const Icon(Icons.lock),
-                  validator: null,
+                  validator: (value) {
+                    if (value != _passwordController.text) {
+                      return 'Passwords don\'t match.';
+                    }
+                    return null;
+                  },
                   obscurText: true,
                 ),
                 Center(

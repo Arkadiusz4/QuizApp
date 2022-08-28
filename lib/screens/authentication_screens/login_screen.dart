@@ -1,7 +1,10 @@
+import 'package:email_validator/email_validator.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'package:quiz_app/main.dart';
+import 'package:quiz_app/screens/authentication_screens/forget_password_screen.dart';
+import 'package:quiz_app/screens/utils.dart';
 import 'package:quiz_app/widgets/text_form_field.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -49,6 +52,8 @@ class _LoginScreenState extends State<LoginScreen> {
       );
     } on FirebaseAuthException catch (e) {
       print(e);
+
+      Utils.showSnackBar(e.message);
     }
 
     navigatorKey.currentState!.popUntil((route) => route.isFirst);
@@ -101,8 +106,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     validator: (value) {
                       if (value!.isEmpty) {
                         return 'This field is required.';
-                      }
-                      if (!RegExp(r'\S+@\S+\.\S+').hasMatch(value)) {
+                      } else if (!EmailValidator.validate(value)) {
                         return 'Please enter a valid email address.';
                       }
                       return null;
@@ -114,18 +118,31 @@ class _LoginScreenState extends State<LoginScreen> {
                     textInputType: TextInputType.text,
                     labelText: 'Password',
                     prefixIcon: const Icon(Icons.email),
-                    validator: null,
+                    validator: (value) {
+                      if (value!.isEmpty) {
+                        return 'This field is required.';
+                      } else if (value.length < 6) {
+                        return 'Password must be longer than 6 characters.';
+                      }
+                      return null;
+                    },
                     obscurText: true),
-                const Align(
+                Align(
                   alignment: Alignment.centerRight,
                   child: Padding(
-                    padding: EdgeInsets.only(right: 20, top: 10),
-                    child: Text(
-                      'Forget Password?',
-                      style: TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.w600,
-                          color: Color(0xFF3083DC)),
+                    padding: const EdgeInsets.only(right: 20, top: 10),
+                    child: GestureDetector(
+                      onTap: (() => Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (_) => const ForgetPasswordScreen()))),
+                      child: const Text(
+                        'Forget Password?',
+                        style: TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.w600,
+                            color: Color(0xFF3083DC)),
+                      ),
                     ),
                   ),
                 ),
