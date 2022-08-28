@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:quiz_app/screens/auth/main_screen.dart';
-import 'package:quiz_app/screens/utils.dart';
+import 'package:quiz_app/screens/auth/utils.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

@@ -3,7 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'package:quiz_app/main.dart';
-import 'package:quiz_app/screens/utils.dart';
+import 'package:quiz_app/screens/auth/utils.dart';
 import 'package:quiz_app/widgets/text_form_field.dart';
 
 class RegisterScreen extends StatefulWidget {
@@ -58,7 +58,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
     } on FirebaseAuthException catch (e) {
       print(e);
 
-      Utils.showSnackBar(e.message);
+      Utils.showSnackBar(e.message, Colors.red);
     }
 
     navigatorKey.currentState!.popUntil((route) => route.isFirst);
