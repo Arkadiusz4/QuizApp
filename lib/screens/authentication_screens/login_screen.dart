@@ -69,6 +69,8 @@ class _LoginScreenState extends State<LoginScreen> {
     // }
   }
 
+  Future loginWithGoogle() async {}
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -229,7 +231,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               width: 20,
                             ),
                             IconButton(
-                              onPressed: () {},
+                              onPressed: loginWithGoogle,
                               icon: const Icon(
                                 Icons.email,
                                 color: Color(0xFF3083DC),
