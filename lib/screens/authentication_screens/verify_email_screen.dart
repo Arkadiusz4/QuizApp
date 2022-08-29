@@ -19,7 +19,6 @@ class _VerifyEmailScreenState extends State<VerifyEmailScreen> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
 
     isEmailVerified = FirebaseAuth.instance.currentUser!.emailVerified;
