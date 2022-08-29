@@ -106,7 +106,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     }
                     return null;
                   },
-                  obscurText: false,
+                  obscureText: false,
                 ),
                 CustomTextFormField(
                   controller: _emailController,
@@ -122,7 +122,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     }
                     return null;
                   },
-                  obscurText: false,
+                  obscureText: false,
                 ),
                 CustomTextFormField(
                   controller: _passwordController,
@@ -138,7 +138,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     }
                     return null;
                   },
-                  obscurText: true,
+                  obscureText: true,
                 ),
                 CustomTextFormField(
                   controller: _confirmPasswordController,
@@ -152,7 +152,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     }
                     return null;
                   },
-                  obscurText: true,
+                  obscureText: true,
                 ),
                 Center(
                   child: Padding(

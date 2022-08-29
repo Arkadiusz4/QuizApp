@@ -9,7 +9,7 @@ class CustomTextFormField extends StatelessWidget {
     required this.labelText,
     required this.prefixIcon,
     required this.validator,
-    required this.obscurText,
+    required this.obscureText,
   }) : super(key: key);
 
   final TextEditingController controller;
@@ -18,7 +18,7 @@ class CustomTextFormField extends StatelessWidget {
   final String labelText;
   final Icon prefixIcon;
   final String? Function(String?)? validator;
-  final bool obscurText;
+  final bool obscureText;
 
   @override
   Widget build(BuildContext context) {
@@ -46,7 +46,7 @@ class CustomTextFormField extends StatelessWidget {
           ),
         ),
         validator: validator,
-        obscureText: obscurText,
+        obscureText: obscureText,
       ),
     );
   }

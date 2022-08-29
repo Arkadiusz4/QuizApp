@@ -114,7 +114,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       }
                       return null;
                     },
-                    obscurText: false),
+                    obscureText: false),
                 CustomTextFormField(
                     controller: _passwordController,
                     textInputAction: TextInputAction.done,
@@ -129,7 +129,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       }
                       return null;
                     },
-                    obscurText: true),
+                    obscureText: true),
                 Align(
                   alignment: Alignment.centerRight,
                   child: Padding(

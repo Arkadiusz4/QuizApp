@@ -133,7 +133,7 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
                           }
                           return null;
                         },
-                        obscurText: false),
+                        obscureText: false),
                     const SizedBox(
                       height: 60,
                     ),
