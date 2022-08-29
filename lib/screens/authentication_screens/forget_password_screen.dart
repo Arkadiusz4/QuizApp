@@ -95,7 +95,7 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
                       height: 40,
                     ),
                     const Text(
-                      'Did somone forget their password?',
+                      'Did someone forget their password?',
                       style:
                           TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
                     ),
