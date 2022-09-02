@@ -32,8 +32,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
   }
 
   Future register() async {
-    final isVaild = _form.currentState!.validate();
-    if (!isVaild) return;
+    final isValid = _form.currentState!.validate();
+    if (!isValid) return;
 
     showDialog(
         context: context,

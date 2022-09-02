@@ -2,7 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'package:quiz_app/screens/auth/auth.dart';
-import 'package:quiz_app/screens/home.dart';
+import 'package:quiz_app/screens/authentication_screens/verify_email_screen.dart';
 
 class MainScreen extends StatelessWidget {
   const MainScreen({Key? key}) : super(key: key);
@@ -23,7 +23,7 @@ class MainScreen extends StatelessWidget {
                 child: Text('Something went wrong!'),
               );
             } else if (snapshot.hasData) {
-              return const HomeScreen();
+              return const VerifyEmailScreen();
             } else {
               return const Auth();
             }

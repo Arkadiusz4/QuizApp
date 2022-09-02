@@ -64,28 +64,39 @@ class _VerifyEmailScreenState extends State<VerifyEmailScreen> {
   Widget build(BuildContext context) => isEmailVerified
       ? const HomeScreen()
       : Scaffold(
-          body: SafeArea(
-          child: SingleChildScrollView(
-              child: Center(
-            child: Column(
-              children: [
-                const Text('Verify Email'),
-                const Text('A verification email has been sent to your email.'),
-                ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                        primary: const Color(0xFF3083DC),
-                        fixedSize:
-                            Size(MediaQuery.of(context).size.width - 60, 50),
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(15))),
-                    child: const Text(
-                      'Reset password',
-                      style:
-                          TextStyle(fontSize: 22, fontWeight: FontWeight.w600),
-                    ),
-                    onPressed: canResendEmail ? sendVerificationEmail : null),
-              ],
+          appBar: AppBar(
+            foregroundColor: Colors.transparent,
+            leading: IconButton(
+              icon: const Icon(
+                Icons.arrow_back_ios_new,
+                color: Color(0xFFFCFCFF),
+              ),
+              onPressed: () => Navigator.of(context).pop(),
             ),
-          )),
-        ));
+          ),
+          body: SafeArea(
+            child: SingleChildScrollView(
+                child: Center(
+              child: Column(
+                children: [
+                  const Text('Verify Email'),
+                  const Text(
+                      'A verification email has been sent to your email.'),
+                  ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                          primary: const Color(0xFF3083DC),
+                          fixedSize:
+                              Size(MediaQuery.of(context).size.width - 60, 50),
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(15))),
+                      child: const Text(
+                        'Reset password',
+                        style: TextStyle(
+                            fontSize: 22, fontWeight: FontWeight.w600),
+                      ),
+                      onPressed: canResendEmail ? sendVerificationEmail : null),
+                ],
+              ),
+            )),
+          ));
 }
