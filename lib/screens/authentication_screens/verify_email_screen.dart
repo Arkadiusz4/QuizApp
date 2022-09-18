@@ -81,20 +81,22 @@ class _VerifyEmailScreenState extends State<VerifyEmailScreen> {
                 children: [
                   const Text('Verify Email'),
                   const Text(
-                      'A verification email has been sent to your email.'),
+                    'A verification email has been sent to your email.',
+                  ),
                   ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                          primary: const Color(0xFF3083DC),
-                          fixedSize:
-                              Size(MediaQuery.of(context).size.width - 60, 50),
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(15))),
-                      child: const Text(
-                        'Reset password',
-                        style: TextStyle(
-                            fontSize: 22, fontWeight: FontWeight.w600),
-                      ),
-                      onPressed: canResendEmail ? sendVerificationEmail : null),
+                    style: ElevatedButton.styleFrom(
+                        primary: const Color(0xFF3083DC),
+                        fixedSize:
+                            Size(MediaQuery.of(context).size.width - 60, 50),
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(15))),
+                    child: const Text(
+                      'Reset password',
+                      style:
+                          TextStyle(fontSize: 22, fontWeight: FontWeight.w600),
+                    ),
+                    onPressed: canResendEmail ? sendVerificationEmail : null,
+                  ),
                 ],
               ),
             )),

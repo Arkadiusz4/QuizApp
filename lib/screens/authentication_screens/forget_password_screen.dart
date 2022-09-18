@@ -3,8 +3,9 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'package:quiz_app/main.dart';
-import 'package:quiz_app/screens/auth/utils.dart';
 import 'package:quiz_app/widgets/text_form_field.dart';
+
+import '../auth/utils.dart';
 
 class ForgetPasswordScreen extends StatefulWidget {
   const ForgetPasswordScreen({Key? key}) : super(key: key);
@@ -149,7 +150,7 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
                         style: TextStyle(
                             fontSize: 22, fontWeight: FontWeight.w600),
                       ),
-                      onPressed: resetPassword,
+                      onPressed: () => resetPassword,
                     ),
                   ]),
             ),
